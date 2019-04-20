@@ -24,4 +24,24 @@
     <select id="findStudentInfo" resultType="com.lmj.school.model.StudentInfo">
         select s.id,s.studentName,s.major,s.sex,s.grade,s.studentId,b.hotWaterBalance,b.foodBalance from student s,balance b where s.id=b.sid;
     </select>
+    <!--//保存饭卡订单-->
+    <!--void saveFoodOrders(Orders orders);-->
+    <insert id="saveFoodOrders">
+        insert into orders values(null,#{studentId},#{investType},#{money},#{spendtTime},#{aid})
+    </insert>
+    <!--//发现饭卡订单-->
+    <!--List<OrderInfo> findOrderInfo();-->
+    <select id="findOrderInfo" resultType="com.lmj.school.model.OrderInfo">
+        select o.aid,o.money,o.investType,o.spendTime,s.studentName from orders o,student s where  o.studentId=s.studentId
+    </select>
+    <!--//根据订单id查找订单-->
+    <!--Orders findOrderById(int id);-->
+    <select id="findOrderById" resultType="com.lmj.school.model.Orders">
+        select * from orders where id=#{id}
+    </select>
+    <!--//根据id查找管理员名;-->
+    <!--String findAdminNameById(int id);-->
+    <select id="findAdminNameById" resultType="string">
+        select adminName from admin where id=#{id}
+    </select>
 </mapper>

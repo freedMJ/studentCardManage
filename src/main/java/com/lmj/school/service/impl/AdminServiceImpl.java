@@ -1,9 +1,7 @@
 package com.lmj.school.service.impl;
 
 import com.lmj.school.mapper.AdminMapper;
-import com.lmj.school.model.Admin;
-import com.lmj.school.model.Student;
-import com.lmj.school.model.StudentInfo;
+import com.lmj.school.model.*;
 import com.lmj.school.service.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +37,26 @@ public class AdminServiceImpl implements IAdminService {
     @Override
     public List<StudentInfo> findStudentInfo() {
         return adminMapper.findStudentInfo();
+    }
+    //保存饭卡订单
+    @Override
+    public void saveFoodOrders(Orders orders) {
+        adminMapper.saveFoodOrders(orders);
+    }
+    //发现饭卡订单
+    @Override
+    public List<OrderInfo> findOrderInfo() {
+        return adminMapper.findOrderInfo();
+    }
+    //根据订单id查找订单
+    @Override
+    public Orders findOrderById(int id) {
+        return adminMapper.findOrderById(id);
+    }
+    //根据id查找管理员名;
+    @Override
+    public String findAdminNameById(int id) {
+        return adminMapper.findAdminNameById(id);
     }
 
 

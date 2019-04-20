@@ -2,21 +2,21 @@ package com.lmj.school.model;
 
 public class Orders {
     private int id;
-    private int uid;
+    private long studentId;
     private int investType;
     private double money;
-    private long spendtTime;
+    private long spendTime;
     private int aid;
 
     public Orders() {
     }
 
-    public Orders(int id, int uid, int investType, double money, long spendtTime, int aid) {
+    public Orders(int id, long studentId, int investType, double money, long spendtTime, int aid) {
         this.id = id;
-        this.uid = uid;
+        this.studentId = studentId;
         this.investType = investType;
         this.money = money;
-        this.spendtTime = spendtTime;
+        this.spendTime = spendtTime;
         this.aid = aid;
     }
 
@@ -28,12 +28,12 @@ public class Orders {
         this.id = id;
     }
 
-    public int getUid() {
-        return uid;
+    public long getStudentId() {
+        return studentId;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setStudentId(long studentId) {
+        this.studentId = studentId;
     }
 
     public int getInvestType() {
@@ -52,12 +52,12 @@ public class Orders {
         this.money = money;
     }
 
-    public long getSpendtTime() {
-        return spendtTime;
+    public long getSpendTime() {
+        return spendTime;
     }
 
-    public void setSpendtTime(long spendtTime) {
-        this.spendtTime = spendtTime;
+    public void setSpendTime(long spendTime) {
+        this.spendTime = spendTime;
     }
 
     public int getAid() {
@@ -72,10 +72,10 @@ public class Orders {
     public String toString() {
         return "Orders{" +
                 "id=" + id +
-                ", uid=" + uid +
+                ", studentId=" + studentId +
                 ", investType=" + investType +
                 ", money=" + money +
-                ", spendtTime=" + spendtTime +
+                ", spendtTime=" + spendTime +
                 ", aid=" + aid +
                 '}';
     }

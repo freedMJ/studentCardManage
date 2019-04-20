@@ -1,8 +1,6 @@
 package com.lmj.school.mapper;
 
-import com.lmj.school.model.Admin;
-import com.lmj.school.model.Student;
-import com.lmj.school.model.StudentInfo;
+import com.lmj.school.model.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +14,6 @@ public interface AdminMapper {
     void saveStudent(Student student);
     //根据学生学号查找学生
     Student findStudentByStudentId(long studentId);
-
     //初始化余额
     void initBalance(int sid);
     //设置学生饭卡余额
@@ -25,5 +22,14 @@ public interface AdminMapper {
     void saveHotWaterCardBalance(@Param("sid") int sid, @Param("hotWaterBalance") int hotWaterBalance );
     //查找所有的学生学生信息
     List<StudentInfo> findStudentInfo();
+    //保存饭卡订单
+    void saveFoodOrders(Orders orders);
+    //发现饭卡订单
+    List<OrderInfo> findOrderInfo();
+    //根据订单id查找订单
+    Orders findOrderById(int id);
+    //根据id查找管理员名;
+    String findAdminNameById(int id);
+
 
 }
