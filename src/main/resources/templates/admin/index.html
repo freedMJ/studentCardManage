@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>首页</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1 style="text-align: center;">校园一卡通管理系统</h1>
+    <ul class="nav nav-pills navbar-default">
+ <!--  <li role="presentation" class="active"><a href="#">最近订单</a></li> -->
+  <li role="presentation"  >
+            <div class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   订单详情<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">最近订单</a></li>
+                    <li><a href="investLog.html">充值记录</a></li>
+                </ul>
+            </div>
+        </li>
+  <li role="presentation"  >
+            <div class="btn-group">
+                <button type="button" class="btn " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    热水卡管理 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="findHotWaterOrder.html">查看热水消费订单</a></li>
+                    <li><a href="investHotWater.html">热水卡充值入口</a></li>
+                   
+                </ul>
+            </div>
+        </li>
+        <li role="presentation"  >
+            <div class="btn-group">
+                <button type="button" class="btn " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    饭卡管理 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="findFoodOrder.html">查看饭卡消费订单</a></li>
+                    <li><a href="investFood.html">饭卡充值入口</a></li>
+                   
+                </ul>
+            </div>
+        </li>
+         <li role="presentation"  >
+            <div class="btn-group">
+                <button type="button" class="btn " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    学生信息管理 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a th:href="@{'/studentManager'}" >管理学生信息</a></li>
+                    <li><a th:href="@{'/investStudentInfo'}">录入学生信息</a></li>
+                   
+                </ul>
+            </div>
+        </li>
+    <!--<div th:include="loginSuccess::headHtml"></div>-->
+
+        <!--<li role="presentation" style="float: right;"><a href="userOut">退出</a></li>-->
+        <!--<li role="presentation" style="float: right;"><a th:text="'欢迎你,'+${session.user.adminName}"></a></li>-->
+</ul>
+<table class="table table-bordered">
+<tr>
+  <td>#</td>
+   <td>订单种类</td>
+   <td>消费时间</td>
+    <td>消费金额</td>
+     <td>学生姓名</td>
+      <td>详细情况</td>
+</tr>
+<tr>
+<td>0</td>
+   <td>热水消费</td>
+   <td>2018-12-19 12:12:26</td>
+    <td>5.00</td>
+     <td>张三</td>
+       <td><a href="detailsInfo.html">查看</a></td>
+</tr>
+<td>1</td>
+   <td>饭卡消费</td>
+   <td>2018-12-19 12:12:26</td>
+    <td>5.00</td>
+     <td>张三</td>
+      <td><a href="detailsInfo.html">查看</a></td>
+</tr>
+<td>2</td>
+   <td>热水消费</td>
+   <td>2018-12-19 12:12:26</td>
+    <td>5.00</td>
+     <td>张三</td>
+      <td><a href="detailsInfo.html">查看</a></td>
+</tr>
+<td>3</td>
+   <td>饭卡消费</td>
+   <td>2018-12-19 12:12:26</td>
+    <td>5.00</td>
+     <td>张三</td>
+      <td><a href="detailsInfo.html">查看</a></td>
+</tr>
+<td>4</td>
+   <td>饭卡消费</td>
+   <td>2018-12-19 12:12:26</td>
+    <td>5.00</td>
+     <td>张三</td>
+     <td><a href="detailsInfo.html">查看</a></td>
+</tr>
+<td>#</td>
+   <td>饭卡消费</td>
+   <td>2018-12-19 12:12:26</td>
+    <td>5.00</td>
+     <td>张三</td>
+      <td><a href="detailsInfo.html">查看</a></td>
+</tr>
+</table>
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

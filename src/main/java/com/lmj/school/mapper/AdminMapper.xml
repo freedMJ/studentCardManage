@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lmj.school.mapper.AdminMapper">
+
+    <!--管理员登录-->
+    <select id="loginAdmin" resultType="com.lmj.school.model.Admin">
+        select id,adminName from admin where adminName=#{adminName} and adminPassword=#{adminPassword}
+    </select>
+    <!--管理员录入学生信息-->
+    <insert id="saveStudent" >
+        insert into student values(null,#{studentName},#{major},#{sex},#{grade},#{studentId})
+    </insert>
+    <!--//根据学生学号查找学生-->
+    <!--Student findStudentByStudentId(long studentId);-->
+    <select id="findStudentByStudentId" resultType="com.lmj.school.model.Student">
+        SELECT * FROM student where studentId=#{studentId}
+    </select>
+    <!--初始化余额-->
+    <insert id="initBalance">
+        insert into balance values(null,#{sid},0,0)
+    </insert>
+    <!--//查找所有的学生学生信息-->
+    <!--StudentInfo findStudentInfo();-->
+    <select id="findStudentInfo" resultType="com.lmj.school.model.StudentInfo">
+        select s.id,s.studentName,s.major,s.sex,s.grade,s.studentId,b.hotWaterBalance,b.foodBalance from student s,balance b where s.id=b.sid;
+    </select>
+</mapper>

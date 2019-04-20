@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>首页</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1 style="text-align: center;">校园一卡通管理系统</h1>
+    <ul class="nav nav-pills navbar-default">
+ <li role="presentation"  >
+            <div class="btn-group">
+                <button type="button" class="btn "  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   订单详情<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">最近订单</a></li>
+                    <li><a href="investLog.html">充值记录</a></li>
+                   
+                </ul>
+            </div>
+        </li>
+  <li role="presentation"  >
+            <div class="btn-group">
+                <button type="button" class="btn " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    热水卡管理 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="findHotWaterOrder.html">查看热水消费订单</a></li>
+                    <li><a href="investHotWater.html">热水卡充值入口</a></li>
+                   
+                </ul>
+            </div>
+        </li>
+        <li role="presentation"  >
+            <div class="btn-group">
+                <button type="button" class="btn " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    饭卡管理 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="findFoodOrder.html">查看饭卡消费订单</a></li>
+                    <li><a href="investFood.html">饭卡充值入口</a></li>
+                   
+                </ul>
+            </div>
+        </li>
+         <li role="presentation" >
+            <div class="btn-group"  >
+                <button type="button" class="btn btn-success dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    学生信息管理 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a >管理学生信息</a></li>
+                    <li><a th:href="@{'/investStudentInfo'}">录入学生信息</a></li>
+                   
+                </ul>
+            </div>
+        </li>
+
+</ul>
+<table class="table table-bordered">
+<tr>
+  <td>#</td>
+   <td>姓名</td>
+   <td>专业</td>
+   <td>性别</td>
+    <td>年级</td>
+    <td>学号</td>
+     <td>热水余额</td>
+      <td>饭卡余额</td>
+</tr>
+
+<tr th:each="studentInfo,studentInfoStat:${pageInfo.list}">
+    <td th:text="${studentInfoStat.index}"></td>
+    <td th:text="${studentInfo.studentName}"></td>
+    <td th:text="${studentInfo.major}"></td>
+    <td th:if="${studentInfo.sex==0}">男</td>
+    <td th:if="${studentInfo.sex==1}">女</td>
+    <td th:text="${studentInfo.grade}"></td>
+    <td th:text="${studentInfo.studentId}"></td>
+    <td th:text="${studentInfo.hotWaterBalance}"></td>
+    <td th:text="${studentInfo.foodBalance}"></td>
+</tr>
+</table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination" >
+            <li th:if="${pageNum -1>0}"><a th:href="@{'/index?pageNum='+${pageNum-1}}" aria-label="Previous" th:text="上一页"><span aria-hidden="true"></span></a></li>
+            <!--如果当前页等于分页-->
+            <li th:each="page,pageStat:${pageNumArray}" >
+                <a th:if="${page ==pageNum}"  href="/index#" th:text="${page}" ></a>
+                <a th:unless="${page ==pageNum}"  th:href="@{'/index?pageNum='+${page}}"  th:text="${page}" ></a>
+            </li>
+            <li th:if="${pageNum < pages}"><a th:href="@{'/index?pageNum='+${pageNum+1}}" aria-label="Next" th:text="下一页"><span aria-hidden="true"></span></a></li>
+        </ul>
+    </nav>
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

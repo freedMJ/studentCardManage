@@ -1,0 +1,13 @@
+<!--<div  xmlns:th="http://www.w3.org/1999/xhtml">-->
+
+        <!--<div th:fragment="loginUser">-->
+            <!--<li role="presentation" style="float: right;"><a href="userOut">退出</a></li>-->
+            <!--<li role="presentation" style="float: right;"><a th:text="'欢迎你,'+${session.user.adminName}"></a></li>-->
+        <!--</div>-->
+<!--</div>-->
+<div th:fragment="headHtml" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div th:if="${session.user.adminName!=null}">
+    <li role="presentation" style="float: right;"><a href="userOut">退出</a></li>
+    <li role="presentation" style="float: right;"><a th:text="'欢迎你,'+${session.user.adminName}"></a></li>
+    </div>
+</div>
