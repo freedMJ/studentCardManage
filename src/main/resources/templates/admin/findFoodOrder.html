@@ -77,7 +77,7 @@
         <td th:text="${#dates.format(orderInfo.spendTime*1000,'yyyy-MM-dd HH:mm:ss')}"></td>
         <td th:text="${orderInfo.money}"></td>
         <td th:text="${orderInfo.studentName}"></td>
-        <td><a  th:href="@{'/detailsInfo?id='+${orderInfo.aid}}" >查看</a></td>
+        <td><a  th:href="@{'/detailsInfo?id='+${orderInfo.id}}" >查看</a></td>
     </tr>
 </table>
     <nav aria-label="Page navigation">

@@ -23,4 +23,7 @@ public interface IAdminService {
     Orders findOrderById(int id);
     //根据id查找管理员名;
     String findAdminNameById(int id);
+    //更新学生饭卡余额
+    void updateFoodBalance(double money,int sid);
+
 }

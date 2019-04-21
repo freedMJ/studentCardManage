@@ -11,12 +11,12 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(int id, long studentId, int investType, double money, long spendtTime, int aid) {
+    public Orders(int id, long studentId, int investType, double money, long spendTime, int aid) {
         this.id = id;
         this.studentId = studentId;
         this.investType = investType;
         this.money = money;
-        this.spendTime = spendtTime;
+        this.spendTime = spendTime;
         this.aid = aid;
     }
 

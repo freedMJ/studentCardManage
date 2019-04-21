@@ -58,6 +58,11 @@ public class AdminServiceImpl implements IAdminService {
     public String findAdminNameById(int id) {
         return adminMapper.findAdminNameById(id);
     }
+    //更新学生饭卡余额
+    @Override
+    public void updateFoodBalance(double money, int sid) {
+        adminMapper.updateFoodBalance(money,sid);
+    }
 
 
 }

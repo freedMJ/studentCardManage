@@ -12,7 +12,9 @@ public class OrderInfo {
      * 订单种类
      * 充值金额
      * 充值人
+     * 订单id
      * **/
+    private int id;
     private String studentName;
     private int sex;
     private long studentId;
@@ -27,7 +29,8 @@ public class OrderInfo {
     public OrderInfo() {
     }
 
-    public OrderInfo(String studentName, int sex, long studentId, String major, String grade, long spendTime, int investType, double money, int aid, String adminName) {
+    public OrderInfo(int id, String studentName, int sex, long studentId, String major, String grade, long spendTime, int investType, double money, int aid, String adminName) {
+        this.id = id;
         this.studentName = studentName;
         this.sex = sex;
         this.studentId = studentId;
@@ -38,6 +41,14 @@ public class OrderInfo {
         this.money = money;
         this.aid = aid;
         this.adminName = adminName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getStudentName() {
@@ -123,7 +134,8 @@ public class OrderInfo {
     @Override
     public String toString() {
         return "OrderInfo{" +
-                "studentName='" + studentName + '\'' +
+                "id=" + id +
+                ", studentName='" + studentName + '\'' +
                 ", sex=" + sex +
                 ", studentId=" + studentId +
                 ", major='" + major + '\'' +

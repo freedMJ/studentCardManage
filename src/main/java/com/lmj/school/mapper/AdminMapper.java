@@ -30,6 +30,8 @@ public interface AdminMapper {
     Orders findOrderById(int id);
     //根据id查找管理员名;
     String findAdminNameById(int id);
+    //跟新学生饭卡余额
+    void updateFoodBalance(@Param("money") double money,@Param("sid") int sid);
 
 
 }

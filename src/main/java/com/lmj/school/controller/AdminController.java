@@ -111,7 +111,6 @@ public class AdminController {
     @ResponseBody
     public Map<String,String> investFood(@RequestBody Orders orders,HttpSession session){
         //根据学号查学生
-        System.out.println(orders);
         String msg=null;
         Student student = adminService.findStudentByStudentId(orders.getStudentId());
         if(student==null){
@@ -124,6 +123,8 @@ public class AdminController {
             Admin user = (Admin) session.getAttribute("user");
             orders.setAid(user.getId());
             adminService.saveFoodOrders(orders);
+            //更新学生饭卡余额
+            adminService.updateFoodBalance(orders.getMoney(),student.getId());
             msg="success";
         }
         Map<String,String> map =new HashMap<>();
@@ -145,7 +146,6 @@ public class AdminController {
         int pages = orderInfoPageInfo.getPages();//查询总数
         //设置一个页面最多允许5个分页
         PageNumsList pageNumsList = new PageNumsList();
-        System.out.println(orderInfoPageInfo.getList());
         int[] pageNumArray = pageNumsList.getPageNumArray(pageNum, pages);
         model.addAttribute("orderInfoPageInfo",orderInfoPageInfo);
         model.addAttribute("pageNumArray",pageNumArray);
@@ -159,8 +159,12 @@ public class AdminController {
         if(id!=0){
             //根据订单id查找订单
             Orders order = adminService.findOrderById(id);
+            System.out.println("11111111111");
+            System.out.println(order);
             //根据学号查找学生信息
             Student student = adminService.findStudentByStudentId(order.getStudentId());
+            System.out.println("2222222222222222");
+            System.out.println(student);
             OrderInfo orderInfo = new OrderInfo();
             orderInfo.setStudentName(student.getStudentName());
             orderInfo.setSex(student.getSex());
@@ -179,5 +183,8 @@ public class AdminController {
         }
         return "admin/detailsInfo";
     }
+
+    //水卡充值
+
 
 }
