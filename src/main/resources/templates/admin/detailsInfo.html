@@ -21,7 +21,8 @@
                 <ul class="dropdown-menu">
                     <li><a th:href="@{'/index'}">最近充值订单</a></li>
                     <!--<li><a th:href="@{'/investLog'}">充值详情</a></li>-->
-                   
+                    <li role="presentation" style="float: right;"><a href="userOut">退出</a></li>
+                    <li role="presentation" style="float: right;"><a th:text="'欢迎你,'+${session.user.adminName}"></a></li>
                 </ul>
             </div>
         </li>

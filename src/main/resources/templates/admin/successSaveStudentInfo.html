@@ -59,7 +59,8 @@
                 </ul>
             </div>
         </li>
-
+        <li role="presentation" style="float: right;"><a href="userOut">退出</a></li>
+        <li role="presentation" style="float: right;"><a th:text="'欢迎你,'+${session.user.adminName}"></a></li>
 </ul>
 <div style="text-align: center;">
     <h2>录入学生信息成功，请返回<a th:href="@{'/studentManager'}" >学生信息管理</a>查看学生信息详情或者返回<a th:href="@{'/index'}" >首页</a></h2>
