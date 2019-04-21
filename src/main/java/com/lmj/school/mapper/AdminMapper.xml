@@ -29,7 +29,7 @@
     <insert id="saveFoodOrders">
         insert into orders values(null,#{studentId},#{investType},#{money},#{spendTime},#{aid})
     </insert>
-    <!--//发现饭卡订单-->
+    <!--//根据订单类型查找订单列表-->
     <!--List<OrderInfo> findOrderInfo();-->
     <select id="findOrderInfo" resultType="com.lmj.school.model.OrderInfo">
         select o.id,o.aid,o.money,o.investType,o.spendTime,s.studentName from orders o,student s where  o.studentId=s.studentId and o.investType=#{investType}
@@ -59,4 +59,8 @@
     <update id="updateHotWaterBalance">
         update balance set hotWaterBalance = hotWaterBalance+#{money} where sid=#{sid}
     </update>
+    <!--//查看所有顶单，根据充值时间升序查找-->
+    <select id="findAllOrderInfo" resultType="com.lmj.school.model.OrderInfo">
+        select o.id,o.aid,o.money,o.investType,a.adminName,o.spendTime,s.studentName from orders o,student s,admin a where  o.studentId=s.studentId  and a.id= o.aid order by spendTime
+    </select>
 </mapper>

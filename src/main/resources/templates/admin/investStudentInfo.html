@@ -68,12 +68,12 @@
    <li role="presentation"  >
             <div class="btn-group">
                 <button type="button" class="btn "  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   订单详情<span class="caret"></span>
+                    充值订单详情<span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="#">最近订单</a></li>
-                    <li><a href="investLog.html">充值记录</a></li>
-                   
+                    <li><a th:href="@{'/index'}">最近充值订单</a></li>
+                    <li><a th:href="@{'/investLog'}">充值详情</a></li>
+
                 </ul>
             </div>
         </li>
@@ -96,8 +96,7 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li><a th:href="@{'/findFoodOrder'}" >查看饭卡充值订单</a></li>
-                    <li><a th:href="@{'/investFood'}" >饭卡充值入口</a></li>
-                   
+
                 </ul>
             </div>
         </li>

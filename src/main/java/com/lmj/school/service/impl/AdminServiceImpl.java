@@ -43,7 +43,7 @@ public class AdminServiceImpl implements IAdminService {
     public void saveFoodOrders(Orders orders) {
         adminMapper.saveFoodOrders(orders);
     }
-    //发现饭卡订单
+    //根据订单类型查找订单列表
     @Override
     public List<OrderInfo> findOrderInfo(int investType) {
         return adminMapper.findOrderInfo(investType);
@@ -72,6 +72,11 @@ public class AdminServiceImpl implements IAdminService {
     @Override
     public void updateHotWaterBalance(double money, int sid) {
         adminMapper.updateHotWaterBalance(money, sid);
+    }
+    //查看所有顶单，根据充值时间升序查找
+    @Override
+    public List<OrderInfo> findAllOrderInfo() {
+        return adminMapper.findAllOrderInfo();
     }
 
 

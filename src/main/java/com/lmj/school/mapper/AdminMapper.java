@@ -24,7 +24,7 @@ public interface AdminMapper {
     List<StudentInfo> findStudentInfo();
     //保存饭卡订单
     void saveFoodOrders(Orders orders);
-    //发现饭卡订单
+    //根据订单类型查找订单列表
     List<OrderInfo> findOrderInfo(int investType);
     //根据订单id查找订单
     Orders findOrderById(int id);
@@ -36,8 +36,8 @@ public interface AdminMapper {
     void saveHotWaterOrder(Orders orders);
     //更新学生水卡余额
     void updateHotWaterBalance(@Param("money") double money,@Param("sid") int sid);
-    //查看所有的热水卡充值订单
-    //List<Orders> findAllHotWaterOrder();
+    //查看所有顶单，根据充值时间升序查找
+    List<OrderInfo> findAllOrderInfo();
 
 
 }

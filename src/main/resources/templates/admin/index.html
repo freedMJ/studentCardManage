@@ -16,12 +16,12 @@
  <!--  <li role="presentation" class="active"><a href="#">最近订单</a></li> -->
   <li role="presentation"  >
             <div class="btn-group">
-                <button type="button" class="btn btn-success dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   订单详情<span class="caret"></span>
+                <button type="button" class="btn btn-success dropdown-toggle "  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    充值订单详情<span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="#">最近订单</a></li>
-                    <li><a href="investLog.html">充值记录</a></li>
+                    <li><a th:href="@{'/index'}">最近充值订单</a></li>
+
                 </ul>
             </div>
         </li>
@@ -67,25 +67,35 @@
         <!--<li role="presentation" style="float: right;"><a th:text="'欢迎你,'+${session.user.adminName}"></a></li>-->
 </ul>
 <table class="table table-bordered">
-<tr>
-  <td>#</td>
-   <td>订单种类</td>
-   <td>充值时间</td>
-    <td>充值金额</td>
-     <td>学生姓名</td>
-      <td>详细情况</td>
-</tr>
-<tr>
-<td>0</td>
-   <td>充值消费</td>
-   <td>2018-12-19 12:12:26</td>
-    <td>5.00</td>
-     <td>张三</td>
-       <td><a href="detailsInfo.html">查看</a></td>
-</tr>
-
+    <tr>
+        <td>#</td>
+        <td>订单种类</td>
+        <td>充值时间</td>
+        <td>充值金额</td>
+        <td>学生姓名</td>
+        <td>充值经手人</td>
+    </tr>
+    <tr th:each="orderInfo,orderInfoStat:${orderInfoPageInfo.list}">
+        <td th:text="${orderInfoStat.index+1}"></td>
+        <td th:if="${orderInfo.investType==0}">水卡充值</td>
+        <td th:if="${orderInfo.investType==1}">饭卡充值</td>
+        <td th:text="${#dates.format(orderInfo.spendTime*1000,'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td th:text="${orderInfo.money}"></td>
+        <td th:text="${orderInfo.studentName}"></td>
+        <td th:text="${orderInfo.adminName}"></td>
+    </tr>
 </table>
-
+    <nav aria-label="Page navigation">
+        <ul class="pagination" >
+            <li th:if="${pageNum -1>0}"><a th:href="@{'/index?pageNum='+${pageNum-1}}" aria-label="Previous" th:text="上一页"><span aria-hidden="true"></span></a></li>
+            <!--如果当前页等于分页-->
+            <li th:each="page,pageStat:${pageNumArray}" >
+                <a th:if="${page ==pageNum}"  href="/index#" th:text="${page}" ></a>
+                <a th:unless="${page ==pageNum}"  th:href="@{'/index?pageNum='+${page}}"  th:text="${page}" ></a>
+            </li>
+            <li th:if="${pageNum < pages}"><a th:href="@{'/index?pageNum='+${pageNum+1}}" aria-label="Next" th:text="下一页"><span aria-hidden="true"></span></a></li>
+        </ul>
+    </nav>
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->

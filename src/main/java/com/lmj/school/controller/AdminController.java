@@ -53,8 +53,25 @@ public class AdminController {
     }
     //访问首页,查看最近所有订单
     @GetMapping("index")
-    public String index(){
+    public String index(Model model,@RequestParam(name="pageNum",defaultValue = "1")int pageNum){
+        //分页
+        PageHelper.startPage(pageNum,MyConstant.PAGESIZE);
+        List<OrderInfo> orderInfo = adminService.findAllOrderInfo();
+        PageInfo<OrderInfo> orderInfoPageInfo = new PageInfo<>(orderInfo);
+        int pages = orderInfoPageInfo.getPages();//查询总数
+        //设置一个页面最多允许5个分页
+        PageNumsList pageNumsList = new PageNumsList();
+        int[] pageNumArray = pageNumsList.getPageNumArray(pageNum, pages);
+        model.addAttribute("orderInfoPageInfo",orderInfoPageInfo);
+        model.addAttribute("pageNumArray",pageNumArray);
+        model.addAttribute("pageNum",pageNum);
+        model.addAttribute("pages",pages);
         return "admin/index";
+    }
+    //查看充值记录
+    @GetMapping("investLog")
+    public String investLog(){
+        return "admin/investLog";
     }
     //录入学生信息
     @GetMapping("investStudentInfo")
