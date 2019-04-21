@@ -45,8 +45,8 @@ public class AdminServiceImpl implements IAdminService {
     }
     //发现饭卡订单
     @Override
-    public List<OrderInfo> findOrderInfo() {
-        return adminMapper.findOrderInfo();
+    public List<OrderInfo> findOrderInfo(int investType) {
+        return adminMapper.findOrderInfo(investType);
     }
     //根据订单id查找订单
     @Override
@@ -62,6 +62,16 @@ public class AdminServiceImpl implements IAdminService {
     @Override
     public void updateFoodBalance(double money, int sid) {
         adminMapper.updateFoodBalance(money,sid);
+    }
+    //保存水卡订单
+    @Override
+    public void saveHotWaterOrder(Orders orders) {
+        adminMapper.saveHotWaterOrder(orders);
+    }
+    //更新学生水卡余额
+    @Override
+    public void updateHotWaterBalance(double money, int sid) {
+        adminMapper.updateHotWaterBalance(money, sid);
     }
 
 

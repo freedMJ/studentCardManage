@@ -18,12 +18,16 @@ public interface IAdminService {
     //保存饭卡订单
     void saveFoodOrders(Orders orders);
     //发现饭卡订单
-    List<OrderInfo> findOrderInfo();
+    List<OrderInfo> findOrderInfo(int investType);
     //根据订单id查找订单
     Orders findOrderById(int id);
     //根据id查找管理员名;
     String findAdminNameById(int id);
     //更新学生饭卡余额
     void updateFoodBalance(double money,int sid);
+    //保存水卡订单
+    void saveHotWaterOrder(Orders orders);
+    //更新学生水卡余额
+    void updateHotWaterBalance( double money, int sid);
 
 }

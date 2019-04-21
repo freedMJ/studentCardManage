@@ -51,7 +51,7 @@ public class AdminController {
         session.removeAttribute("user");
         return "admin/login";
     }
-    //访问首页
+    //访问首页,查看最近所有订单
     @GetMapping("index")
     public String index(){
         return "admin/index";
@@ -141,7 +141,7 @@ public class AdminController {
     public String findFoodOrder(Model model,@RequestParam(name="pageNum",defaultValue = "1")int pageNum){
         //分页
         PageHelper.startPage(pageNum,MyConstant.PAGESIZE);
-        List<OrderInfo> orderInfo = adminService.findOrderInfo();
+        List<OrderInfo> orderInfo = adminService.findOrderInfo(1);
         PageInfo<OrderInfo> orderInfoPageInfo = new PageInfo<>(orderInfo);
         int pages = orderInfoPageInfo.getPages();//查询总数
         //设置一个页面最多允许5个分页
@@ -159,12 +159,8 @@ public class AdminController {
         if(id!=0){
             //根据订单id查找订单
             Orders order = adminService.findOrderById(id);
-            System.out.println("11111111111");
-            System.out.println(order);
             //根据学号查找学生信息
             Student student = adminService.findStudentByStudentId(order.getStudentId());
-            System.out.println("2222222222222222");
-            System.out.println(student);
             OrderInfo orderInfo = new OrderInfo();
             orderInfo.setStudentName(student.getStudentName());
             orderInfo.setSex(student.getSex());
@@ -178,13 +174,57 @@ public class AdminController {
             String adminName = adminService.findAdminNameById(order.getAid());
             orderInfo.setAid(order.getAid());
             orderInfo.setAdminName(adminName);
-            System.out.println(orderInfo);
             model.addAttribute("orderInfo",orderInfo);
         }
         return "admin/detailsInfo";
     }
 
     //水卡充值
+    @GetMapping("investHostWater")
+    public String investHostWater(){
+        return "admin/investHotWater";
+    }
+    @PostMapping("investHotWater")
+    @ResponseBody
+    public Map<String,String> investHostWater(@RequestBody Orders orders,HttpSession session){
+        //根据学号查学生
+        String msg=null;
+        Student student = adminService.findStudentByStudentId(orders.getStudentId());
+        if(student==null){
+            msg="该学生不存在";
+        }else{
+            //得到当前时间
+            long time = new Date().getTime()/1000;
+            orders.setSpendTime(time);
+            orders.setInvestType(0);
+            Admin user = (Admin) session.getAttribute("user");
+            orders.setAid(user.getId());
+            adminService.saveHotWaterOrder(orders);
+            //更新学生水卡余额
+            adminService.updateHotWaterBalance(orders.getMoney(),student.getId());
+            msg="success";
+        }
+        Map<String,String> map =new HashMap<>();
+        map.put("msg",msg);
+        return map;
+    }
+    //查看所有的热水卡充值订单
+    @GetMapping("findHotWaterOrder")
+    public String findHotWaterOrder(Model model,@RequestParam(name="pageNum",defaultValue = "1")int pageNum){
+        //分页
+        PageHelper.startPage(pageNum,MyConstant.PAGESIZE);
+        List<OrderInfo> orderInfo = adminService.findOrderInfo(0);
+        PageInfo<OrderInfo> orderInfoPageInfo = new PageInfo<>(orderInfo);
+        int pages = orderInfoPageInfo.getPages();//查询总数
+        //设置一个页面最多允许5个分页
+        PageNumsList pageNumsList = new PageNumsList();
+        int[] pageNumArray = pageNumsList.getPageNumArray(pageNum, pages);
+        model.addAttribute("orderInfoPageInfo",orderInfoPageInfo);
+        model.addAttribute("pageNumArray",pageNumArray);
+        model.addAttribute("pageNum",pageNum);
+        model.addAttribute("pages",pages);
+        return "admin/findHotWaterOrder";
+    }
 
 
 }

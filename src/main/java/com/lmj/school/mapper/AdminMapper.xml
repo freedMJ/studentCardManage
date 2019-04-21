@@ -32,7 +32,7 @@
     <!--//发现饭卡订单-->
     <!--List<OrderInfo> findOrderInfo();-->
     <select id="findOrderInfo" resultType="com.lmj.school.model.OrderInfo">
-        select o.id,o.aid,o.money,o.investType,o.spendTime,s.studentName from orders o,student s where  o.studentId=s.studentId
+        select o.id,o.aid,o.money,o.investType,o.spendTime,s.studentName from orders o,student s where  o.studentId=s.studentId and o.investType=#{investType}
     </select>
     <!--//根据订单id查找订单-->
     <!--Orders findOrderById(int id);-->
@@ -48,5 +48,15 @@
     <!--void updateFoodBalance(double money);-->
     <update id="updateFoodBalance">
         update balance set foodBalance =foodBalance+#{money} where sid=#{sid}
+    </update>
+    <!--//保存水卡订单-->
+    <!--void saveHotWater(Orders orders);-->
+    <insert id="saveHotWaterOrder">
+        insert into orders values(null,#{studentId},#{investType},#{money},#{spendTime},#{aid})
+    </insert>
+    <!--//更新学生水卡余额-->
+    <!--void updateHotWaterBalance(@Param("money") double money,@Param("sid") int sid);-->
+    <update id="updateHotWaterBalance">
+        update balance set hotWaterBalance = hotWaterBalance+#{money} where sid=#{sid}
     </update>
 </mapper>
