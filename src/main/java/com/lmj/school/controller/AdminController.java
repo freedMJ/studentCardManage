@@ -68,11 +68,6 @@ public class AdminController {
         model.addAttribute("pages",pages);
         return "admin/index";
     }
-    //查看充值记录
-    @GetMapping("investLog")
-    public String investLog(){
-        return "admin/investLog";
-    }
     //录入学生信息
     @GetMapping("investStudentInfo")
     public String investStudentInfo(){

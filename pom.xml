@@ -22,6 +22,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.0.3.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -51,32 +52,6 @@
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf-spring5</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.thymeleaf</groupId>-->
-            <!--<artifactId>thymeleaf</artifactId>-->
-            <!--<version>3.0.0.RELEASE</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.thymeleaf</groupId>-->
-            <!--<artifactId>thymeleaf-spring4</artifactId>-->
-            <!--<version>3.0.0.RELEASE</version>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<artifactId>javassist</artifactId>-->
-                    <!--<groupId>org.javassist</groupId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.thymeleaf.extras</groupId>-->
-            <!--<artifactId>thymeleaf-extras-springsecurity4</artifactId>-->
-            <!--<version>3.0.0.RELEASE</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.thymeleaf.extras</groupId>-->
-            <!--<artifactId>thymeleaf-extras-java8time</artifactId>-->
-            <!--<version>3.0.0.RELEASE</version>-->
-        <!--</dependency>-->
         <!--mybatis的分页插件pagehelper依赖-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
