@@ -1,0 +1,15 @@
+2019-04-21 12:39:28.602  INFO 5236 --- [main] com.lmj.school.SchoolApplication         : Starting SchoolApplication on DESKTOP-1O9OU02 with PID 5236 (started by asus in C:\Users\asus\Desktop\个人作品\schoolCardManage)
+2019-04-21 12:39:28.652  INFO 5236 --- [main] com.lmj.school.SchoolApplication         : No active profile set, falling back to default profiles: default
+2019-04-21 12:39:35.685  INFO 5236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8888 (http)
+2019-04-21 12:39:35.813  INFO 5236 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-21 12:39:35.813  INFO 5236 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-04-21 12:39:36.087  INFO 5236 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-21 12:39:36.088  INFO 5236 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6323 ms
+2019-04-21 12:39:39.253  INFO 5236 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-21 12:39:40.303  INFO 5236 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8888 (http) with context path ''
+2019-04-21 12:39:40.310  INFO 5236 --- [main] com.lmj.school.SchoolApplication         : Started SchoolApplication in 18.552 seconds (JVM running for 35.361)
+2019-04-21 12:39:43.066  INFO 5236 --- [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-21 12:39:43.067  INFO 5236 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-04-21 12:39:43.075  INFO 5236 --- [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2019-04-21 12:39:47.411  INFO 5236 --- [http-nio-8888-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-04-21 12:39:48.299  INFO 5236 --- [http-nio-8888-exec-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
